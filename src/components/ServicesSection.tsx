@@ -25,25 +25,29 @@ const services = [
 ];
 
 const ServicesSection = () => {
-  const ref = useScrollReveal();
+  const headerRef = useScrollReveal({ staggerChildren: true, staggerDelay: 100 });
+  const gridRef = useScrollReveal({ staggerChildren: true, staggerDelay: 150, delay: 200 });
 
   return (
-    <section id="services" className="section-padding" ref={ref}>
+    <section id="services" className="section-padding">
       <div className="max-w-7xl mx-auto">
-        <p className="label-upper mb-4">What We Deliver</p>
-        <h2 className="heading-lg text-balance max-w-2xl gold-line">
-          Not websites. Revenue engines.
-        </h2>
+        <div ref={headerRef}>
+          <p data-reveal className="label-upper mb-4">What We Deliver</p>
+          <h2 data-reveal className="heading-lg text-balance max-w-2xl gold-line">
+            Not websites. Revenue engines.
+          </h2>
+        </div>
 
-        <div className="mt-16 grid md:grid-cols-2 gap-px bg-border">
+        <div ref={gridRef} className="mt-16 grid md:grid-cols-2 gap-px bg-border">
           {services.map((s, i) => (
             <div
               key={i}
-              className="bg-background p-8 md:p-12 group hover:bg-secondary transition-colors duration-300"
+              data-reveal
+              className="bg-background p-8 md:p-12 group card-interactive hover:bg-secondary"
             >
               <div className="flex items-start justify-between mb-6">
                 <h3 className="text-xl md:text-2xl font-display font-500">{s.title}</h3>
-                <ArrowUpRight className="w-5 h-5 text-warm-gray group-hover:text-gold transition-colors" />
+                <ArrowUpRight className="w-5 h-5 text-warm-gray group-hover:text-gold group-hover:rotate-12 transition-all duration-300" />
               </div>
               <p className="body-lg mb-6">{s.desc}</p>
               <p className="text-sm font-medium text-gold">{s.outcome}</p>

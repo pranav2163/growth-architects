@@ -47,30 +47,32 @@ const tiers = [
 ];
 
 const PricingSection = () => {
-  const ref = useScrollReveal();
+  const headerRef = useScrollReveal({ direction: "scale" });
+  const gridRef = useScrollReveal({ staggerChildren: true, staggerDelay: 200, delay: 200 });
 
   const scrollToContact = () => {
     document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
-    <section id="pricing" className="section-padding bg-secondary" ref={ref}>
+    <section id="pricing" className="section-padding bg-secondary">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-16">
+        <div ref={headerRef} className="text-center mb-16">
           <p className="label-upper mb-4">Investment</p>
           <h2 className="heading-lg text-balance">
             Choose your growth trajectory.
           </h2>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-6">
+        <div ref={gridRef} className="grid md:grid-cols-3 gap-6">
           {tiers.map((t, i) => (
             <div
               key={i}
-              className={`p-8 md:p-10 rounded transition-shadow duration-300 ${
+              data-reveal
+              className={`p-8 md:p-10 rounded hover-lift ${
                 t.featured
-                  ? "bg-charcoal text-warm-white shadow-2xl ring-1 ring-gold/20 scale-[1.02]"
-                  : "bg-background shadow-lg hover:shadow-xl"
+                  ? "bg-charcoal text-warm-white shadow-2xl ring-1 ring-gold/20 scale-[1.02] hover-glow"
+                  : "bg-background shadow-lg"
               }`}
             >
               {t.featured && (
@@ -84,14 +86,14 @@ const PricingSection = () => {
               <ul className="space-y-3 mb-10">
                 {t.features.map((f, j) => (
                   <li key={j} className="flex items-start gap-3 text-sm">
-                    <Check className={`w-4 h-4 mt-0.5 shrink-0 ${t.featured ? "text-gold" : "text-gold"}`} />
+                    <Check className="w-4 h-4 mt-0.5 shrink-0 text-gold" />
                     <span className={t.featured ? "text-warm-white/80" : ""}>{f}</span>
                   </li>
                 ))}
               </ul>
               <Button
                 variant={t.featured ? "hero" : "heroOutline"}
-                className="w-full"
+                className="w-full hover-lift"
                 onClick={scrollToContact}
               >
                 Get Started
