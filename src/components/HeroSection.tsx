@@ -34,7 +34,16 @@ const HeroSection = () => {
           </p>
 
           <div className="mt-12 flex flex-wrap gap-4 animate-hero-text" style={{ animationDelay: "900ms" }}>
-            <Button variant="hero" size="xl" onClick={() => scrollTo("contact")} className="hover-lift">
+            <Button 
+              variant="hero" 
+              size="xl" 
+              onClick={() => {
+                const btn = document.getElementById("strategy-btn");
+                if (btn) btn.click();
+                else scrollTo("contact");
+              }} 
+              className="hover-lift"
+            >
               Book a Strategy Call
             </Button>
             <Button variant="heroOutline" size="xl" onClick={() => scrollTo("portfolio")} className="border-warm-white/30 text-warm-white hover:bg-warm-white hover:text-charcoal hover-lift">

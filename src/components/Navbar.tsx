@@ -39,7 +39,16 @@ const Navbar = () => {
             </button>
           ))}
         </div>
-        <Button variant="hero" size="sm" onClick={() => scrollTo("contact")} className="hidden md:inline-flex animate-hero-text delay-1000">
+        <Button 
+          variant="hero" 
+          size="sm" 
+          onClick={() => {
+            const btn = document.getElementById("strategy-btn");
+            if (btn) btn.click();
+            else scrollTo("contact");
+          }} 
+          className="hidden md:inline-flex animate-hero-text delay-1000"
+        >
           Start a Project
         </Button>
       </div>
