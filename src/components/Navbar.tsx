@@ -18,13 +18,14 @@ const Navbar = () => {
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 animate-nav ${
-        scrolled ? "bg-black/95 backdrop-blur-sm shadow-sm" : "bg-black"
+        scrolled ? "backdrop-blur-sm shadow-sm" : ""
       }`}
+      style={{ backgroundColor: "#0f0f0f" }}
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between px-6 md:px-12 py-5">
         <button onClick={() => scrollTo("hero")} className="flex items-center gap-2 hover-lift">
-          <img src={janxLogo} alt="JANX webuild's" className="h-12 w-12" />
-          <span className="font-display text-xl font-600 tracking-tight text-white">JANX webuild's</span>
+          <img src={janxLogo} alt="JANX webuild's" className="h-16 w-16 object-contain" />
+          <span className="font-display text-xl font-600 tracking-tight" style={{ color: "white" }}>JANX webuild's</span>
         </button>
         <div className="hidden md:flex items-center gap-8">
           {["services", "process", "portfolio", "pricing", "about"].map((s, i) => (
