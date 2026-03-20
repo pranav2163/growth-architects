@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
+import janxLogo from "@/assets/janx-logo.png";
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -21,8 +22,9 @@ const Navbar = () => {
       }`}
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between px-6 md:px-12 py-5">
-        <button onClick={() => scrollTo("hero")} className="font-display text-xl font-600 tracking-tight text-foreground">
-          AMYRON
+        <button onClick={() => scrollTo("hero")} className="flex items-center gap-2">
+          <img src={janxLogo} alt="JANX webuild's" className="h-9 w-9" />
+          <span className="font-display text-xl font-600 tracking-tight text-foreground">JANX webuild's</span>
         </button>
         <div className="hidden md:flex items-center gap-8">
           {["services", "process", "portfolio", "pricing", "about"].map((s) => (
